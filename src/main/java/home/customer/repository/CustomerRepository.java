@@ -9,6 +9,8 @@ import home.customer.model.Customer;
 
 import java.util.List;
 
+/* Dao Class */
+
 @Repository
 public class CustomerRepository {
     private final JdbcTemplate jdbcTemplate;
