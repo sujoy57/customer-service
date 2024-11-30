@@ -14,7 +14,7 @@
     
      <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>home.telecom.App</start-class>
+        <start-class>home.customer.App</start-class>
         <java.version>21</java.version>
         <lombok.version>1.14.8</lombok.version>
         <log4jdbc.log4j2.version>1.16</log4jdbc.log4j2.version>
