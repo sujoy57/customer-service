@@ -1,0 +1,6 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/ethereal-shine-443212-d0/customer-service', '.']
+
+# Option C: Use CLOUD_LOGGING_ONLY or NONE
+logging: CLOUD_LOGGING_ONLY
