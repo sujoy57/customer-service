@@ -18,7 +18,7 @@ FROM openjdk:21
 WORKDIR /app
 
 # Copy the JAR file from the build stage
-COPY --from=builder /app/target/*.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
