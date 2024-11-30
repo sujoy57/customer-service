@@ -20,6 +20,11 @@ public class CustomerController {
     public List<Customer> getAllCustomers() {
         return service.getAllCustomers();
     }
+    
+    @GetMapping("/welcome")
+	public String welcome() {
+		return "your rest endpoint works";
+	}
 
     @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable Long id) {
