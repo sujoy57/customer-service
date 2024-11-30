@@ -57,13 +57,11 @@
             <version>${rest.assured.version}</version>
             <scope>test</scope>
         </dependency>
-		<!--
 		<dependency>
 		    <groupId>com.google.cloud</groupId>
 		    <artifactId>spring-cloud-gcp-starter-secretmanager</artifactId>
 		    <version>5.8.0</version>
 		</dependency>
-		-->
     </dependencies>
     <build>
         <plugins>
