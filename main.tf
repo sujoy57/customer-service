@@ -28,16 +28,3 @@ data "google_iam_policy" "noauth" {
     members = ["allUsers"]
   }
 }
-
-variable "project_id" {
-	default = "ethereal-shine-443212-d0"
-}
-variable "region" {
-	default = "europe-west1"
-}
-variable "service_name" {
-	default = "customer-service-v1"
-}
-variable "image" {
-	default = "europe-west1-docker.pkg.dev/ethereal-shine-443212-d0/demo/customer-service-v1:latest"
-}
