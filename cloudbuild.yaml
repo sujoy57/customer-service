@@ -35,6 +35,6 @@ steps:
       - "--allow-unauthenticated"
     id: "Deploy to Cloud Run"
 
-timeout: 120s
+timeout: 600s
 options:
   logging: CLOUD_LOGGING_ONLY
