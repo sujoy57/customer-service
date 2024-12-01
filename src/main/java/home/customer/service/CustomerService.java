@@ -7,9 +7,9 @@ import home.customer.repository.CustomerRepository;
 
 import java.util.List;
 
-@Service
+//@Service
 public class CustomerService {
-    private final CustomerRepository repository;
+    /*private final CustomerRepository repository;
 
     public CustomerService(CustomerRepository repository) {
         this.repository = repository;
@@ -33,5 +33,5 @@ public class CustomerService {
 
     public void deleteCustomer(Long id) {
         repository.deleteById(id);
-    }
+    }*/
 }

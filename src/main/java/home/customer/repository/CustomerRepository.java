@@ -11,9 +11,9 @@ import java.util.List;
 
 /* Dao Class */
 
-@Repository
+//@Repository
 public class CustomerRepository {
-    private final JdbcTemplate jdbcTemplate;
+    /*private final JdbcTemplate jdbcTemplate;
 
     public CustomerRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -42,5 +42,5 @@ public class CustomerRepository {
     public int deleteById(Long id) {
         String sql = "DELETE FROM customers WHERE id = ?";
         return jdbcTemplate.update(sql, id);
-    }
+    }*/
 }

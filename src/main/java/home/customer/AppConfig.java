@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 @Configuration
 public class AppConfig {
-    @Autowired
+    /*@Autowired
     DataSourceProperties dataSourceProperties;
 
     @Bean
@@ -32,5 +32,5 @@ public class AppConfig {
     @Primary
     DataSource dataSource() {
         return new DataSourceSpy(realDataSource());
-    }
+    }*/
 }

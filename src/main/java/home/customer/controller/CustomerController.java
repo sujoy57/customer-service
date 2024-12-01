@@ -10,23 +10,23 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
-    private final CustomerService service;
+    /*private final CustomerService service;
 
     public CustomerController(CustomerService service) {
         this.service = service;
-    }
+    }*/
 
-    @GetMapping
+    /*@GetMapping
     public List<Customer> getAllCustomers() {
         return service.getAllCustomers();
-    }
+    }*/
     
     @GetMapping("/welcome")
 	public String welcome() {
-		return "your rest endpoint works";
+		return "Welcome";
 	}
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable Long id) {
         return service.getCustomerById(id);
     }
@@ -45,5 +45,5 @@ public class CustomerController {
     @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable Long id) {
         service.deleteCustomer(id);
-    }
+    }*/
 }
