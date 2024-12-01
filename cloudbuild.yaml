@@ -18,8 +18,7 @@ steps:
       - "-c"
       - |
         terraform init &&
-        terraform plan -out=tfplan &&
-        terraform apply -auto-approve tfplan
+        terraform apply -auto-approve
     id: "Run Terraform"
 
   # Step 4: Deploy the Docker image to Cloud Run
@@ -30,7 +29,7 @@ steps:
       - "deploy"
       - "$_SERVICE_NAME"
       - "--image=$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:latest"
-      - "--region=us-$_DEPLOY_REGION"
+      - "--region=$_DEPLOY_REGION"
       - "--platform=managed"
       - "--allow-unauthenticated"
     id: "Deploy to Cloud Run"
