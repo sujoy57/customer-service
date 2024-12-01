@@ -18,7 +18,7 @@ steps:
         echo "project_id = \"$PROJECT_ID\"" > terraform.tfvars &&
         echo "region = \"$_DEPLOY_REGION\"" >> terraform.tfvars &&
         echo "image = \"$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:latest\"" >> terraform.tfvars &&
-        echo "service_name = \"_SERVICE_NAME\"" >> terraform.tfvars
+        echo "service_name = \"$_SERVICE_NAME\"" >> terraform.tfvars
     id: Generate terraform.tfvars
   - name: hashicorp/terraform:1.5.0
     entrypoint: /bin/sh
