@@ -30,7 +30,7 @@ data "google_iam_policy" "noauth" {
 }
 
 variable "project_id" {
-	default = data.google_project.project.number
+	default = "894266588013"
 }
 variable "region" {
 	default = "europe-west1"
