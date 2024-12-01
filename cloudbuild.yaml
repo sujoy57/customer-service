@@ -1,16 +1,40 @@
 steps:
+  # Step 1: Build the Docker image
   - name: gcr.io/cloud-builders/docker
     args:
       - build
       - '-t'
-      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:latest'
       - .
+  # Step 2: Push the Docker image to Google Container Registry
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
-timeout: 1200s
-images:
-  - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:latest'
+  # Step 3: Execute Terraform to create or update Cloud Run service
+  - name: "hashicorp/terraform:1.5.0"
+    entrypoint: "/bin/sh"
+    args:
+      - "-c"
+      - |
+        terraform init &&
+        terraform plan -out=tfplan &&
+        terraform apply -auto-approve tfplan
+    id: "Run Terraform"
+
+  # Step 4: Deploy the Docker image to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "$_SERVICE_NAME"
+      - "--image=$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:latest"
+      - "--region=us-$_DEPLOY_REGION"
+      - "--platform=managed"
+      - "--allow-unauthenticated"
+    id: "Deploy to Cloud Run"
+
+timeout: 120s
 options:
   logging: CLOUD_LOGGING_ONLY
