@@ -3,7 +3,7 @@ provider "google" {
   region  = var.region
 }
 
-resource "google_cloud_run_service" "cloud_run_service" {
+resource "google_cloud_run_service" "my_service" {
   name     = var.service_name
   location = var.region
 
@@ -18,7 +18,7 @@ resource "google_cloud_run_service" "cloud_run_service" {
 
 resource "google_cloud_run_service_iam_policy" "noauth" {
   location    = var.region
-  service     = google_cloud_run_service.cloud_run_service.name
+  service     = google_cloud_run_service.my_service.name
   policy_data = data.google_iam_policy.noauth.policy_data
 }
 
