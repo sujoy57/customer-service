@@ -41,5 +41,3 @@ variable "service_name" {
 variable "image" {
 	default = "europe-west1-docker.pkg.dev/ethereal-shine-443212-d0/demo/customer-service-v1:latest"
 }
-
-data "google_project" "project" {}
