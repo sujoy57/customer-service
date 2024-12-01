@@ -10,7 +10,7 @@ resource "google_cloud_run_service" "my_service" {
   template {
     spec {
       containers {
-        image = var.service_image
+        image = var.image
       }
     }
   }
