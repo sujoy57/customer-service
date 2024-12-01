@@ -12,3 +12,8 @@ variable "service_name" {
   description = "Cloud Run Service Name"
   type        = string
 }
+
+variable "service_image" {
+  description = "Cloud Run Service Image Name"
+  type        = string
+}
