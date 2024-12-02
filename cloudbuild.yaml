@@ -11,7 +11,7 @@ steps:
       - push
       - $_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_CR_SERVICE_NAME:latest
     id: Push docker image
-  - name: gcr.io/cloudC-builders/gcloud
+  - name: gcr.io/cloud-builders/gcloud
     entrypoint: /bin/sh
     args:
       - -c
