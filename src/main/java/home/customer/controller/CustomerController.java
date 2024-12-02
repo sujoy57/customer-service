@@ -23,7 +23,7 @@ public class CustomerController {
     
     @GetMapping("/welcome")
 	public String welcome() {
-		return "Welcome";
+		return "Welcome Sujoy";
 	}
 
     /*@GetMapping("/{id}")
