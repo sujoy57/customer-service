@@ -5,39 +5,12 @@ steps:
       - -t
       - $_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_CR_SERVICE_NAME:latest
       - .
+    id: Build docker image
   - name: gcr.io/cloud-builders/docker
     args:
       - push
       - $_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_CR_SERVICE_NAME:latest
-  - name: gcr.io/cloud-builders/gcloud
-    entrypoint: /bin/sh
-    args:
-      - "-c"
-      - |
-        echo "project_id = \"$PROJECT_ID\"" > terraform.tfvars &&
-        echo "region = \"$_DEPLOY_REGION\"" >> terraform.tfvars &&
-        echo "service_name = \"$_CR_SERVICE_NAME\"" >> terraform.tfvars &&
-        echo "image = \"$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_CR_SERVICE_NAME:latest\"" >> terraform.tfvars
-    id: Generate terraform.tfvars
-  - name: hashicorp/terraform:1.5.0
-    entrypoint: /bin/sh
-    args:
-      - -c
-      - |
-        terraform init &&
-        terraform apply -var-file=terraform.tfvars -auto-approve
-    id: Run Terraform
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: gcloud
-    args:
-      - run
-      - deploy
-      - $_CR_SERVICE_NAME
-      - --image=$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_CR_SERVICE_NAME:latest
-      - --region=$_DEPLOY_REGION
-      - --platform=managed
-      - --allow-unauthenticated
-    id: Deploy to Cloud Run
+    id: Push docker image  
 timeout: 600s
 options:
   logging: CLOUD_LOGGING_ONLY

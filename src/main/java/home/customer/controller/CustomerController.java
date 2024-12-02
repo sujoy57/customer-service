@@ -8,7 +8,7 @@ import home.customer.service.CustomerService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api")
 public class CustomerController {
     /*private final CustomerService service;
 
@@ -23,7 +23,7 @@ public class CustomerController {
     
     @GetMapping("/welcome")
 	public String welcome() {
-		return "Welcome Sujoy";
+		return "Welcome Sujoy for demotest";
 	}
 
     /*@GetMapping("/{id}")
