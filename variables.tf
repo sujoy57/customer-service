@@ -8,12 +8,12 @@ variable "region" {
   type        = string
 }
 
-variable "image" {
-  description = "Cloud Run Service Image Name"
+variable "service_name" {
+  description = "Cloud Run Service Name"
   type        = string
 }
 
-variable "service_name" {
-  description = "Cloud Run Service Name"
+variable "image" {
+  description = "Cloud Run Service Image Name"
   type        = string
 }
