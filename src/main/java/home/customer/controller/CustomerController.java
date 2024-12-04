@@ -23,7 +23,7 @@ public class CustomerController {
     
     @GetMapping("/welcome")
 	public String welcome() {
-		return "your rest endpoint works...";
+		return "your rest endpoint works 04/12";
 	}
 
     @GetMapping("/{id}")
