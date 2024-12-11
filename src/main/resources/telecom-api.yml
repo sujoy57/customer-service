@@ -1,0 +1,136 @@
+---
+swagger: "2.0"
+info:
+  title: telecom
+  description: Customer API for telecom.
+  version: 1.0.0
+host: telecom.apigateway.ethereal-shine-443212-d0.cloud.goog
+schemes:
+  - https
+produces:
+  - application/json
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+paths:
+  "/api/customers/{id}":
+    get:
+      description: Get one customer details
+      operationId: get_one_customer
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: number
+      x-google-backend:
+        address: https://customer-service-894266588013.europe-west1.run.app
+        path_translation: APPEND_PATH_TO_ADDRESS
+      security:
+        - api_key: []
+      responses:
+        "200":
+          description: Success.
+          schema:
+            $ref: "#/definitions/Customer"
+        "400":
+          description: Not welcome.
+    put:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: number
+        - in: body
+          name: body
+          #required: true
+          schema:
+            $ref: "#/definitions/Customer"
+      x-google-backend:
+        address: https://customer-service-894266588013.europe-west1.run.app
+        path_translation: APPEND_PATH_TO_ADDRESS
+      security:
+        - api_key: []      
+      summary: Update custimer
+      operationId: update_customer
+      responses:
+        "200":
+          description: A successful response
+        "404":
+          description: Not Found
+    delete:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: number
+      x-google-backend:
+        address: https://customer-service-894266588013.europe-west1.run.app
+        path_translation: APPEND_PATH_TO_ADDRESS
+      security:
+        - api_key: []  
+      summary: Delete customer
+      operationId: delete customer
+      responses:
+        "204":
+          description: A successful response
+  "/api/customers":
+    get:
+      description: Get all customer details
+      operationId: get_all_customer
+      x-google-backend:
+        address: https://customer-service-894266588013.europe-west1.run.app
+        path_translation: APPEND_PATH_TO_ADDRESS
+      security:
+        - api_key: []  
+      responses:
+        "200":
+          description: Success.
+          schema:
+            $ref: "#/definitions/CustomerArray"
+        "400":
+          description: Not welcome.
+    post:
+      parameters:
+        - in: body
+          name: body
+          #required: true
+          schema:
+            $ref: "#/definitions/Customer"  
+      x-google-backend:
+        address: https://customer-service-894266588013.europe-west1.run.app
+        path_translation: APPEND_PATH_TO_ADDRESS
+      security:
+        - api_key: []  
+      summary: add new custimer
+      operationId: add_customer
+      responses:
+        "200":
+          description: A successful response
+        "404":
+          description: Not Found
+definitions:
+  CustomerArray:
+    title: CustomerArray
+    type: array
+    items: 
+      $ref: '#/definitions/Customer'
+  Customer:
+    title: Customer
+    type: object
+    properties:
+      id:
+        title: id
+        type: number
+      name:
+        title: name
+        type: string
+      email:
+        title: email
+        type: string
+      phoneNumber:
+        title: phoneNumber
+        type: string
